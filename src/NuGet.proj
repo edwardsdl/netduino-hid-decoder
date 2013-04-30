@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="NuGet-Pack" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Target Name="NuGet-Pack">
+        <ItemGroup>
+            <SolutionFiles Include="*.sln">
+                <Properties>Configuration=Release;Platform=Any CPU</Properties>
+            </SolutionFiles>
+        </ItemGroup>
+        <ItemGroup>
+            <ProjectFiles Include="**\*.csproj" />
+        </ItemGroup>
+        <ItemGroup>
+            <FilteredProjectFiles Include="@(ProjectFiles)" Condition="Exists('%(RelativeDir)%(Filename).nuspec')" />
+        </ItemGroup>
+        <MSBuild Projects="@(SolutionFiles)" Targets="Rebuild" Properties="%(Properties)" />
+        <Exec Command="nuget pack %(FilteredProjectFiles.FullPath) -Properties Configuration=Release;Platform=AnyCPU" />
+    </Target>
+    <Target Name="NuGet-Push" DependsOnTargets="NuGet-Pack">
+        <Exec Command="nuget push *.nupkg" />
+    </Target>
+</Project>
