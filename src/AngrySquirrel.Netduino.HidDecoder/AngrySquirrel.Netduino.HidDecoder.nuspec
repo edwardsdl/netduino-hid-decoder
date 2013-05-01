@@ -11,7 +11,6 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <copyright>Copyright 2013</copyright>
-	<dependencies />
     <tags>C# Netduino RFID HID MiniProx</tags>
   </metadata>
   <files>
