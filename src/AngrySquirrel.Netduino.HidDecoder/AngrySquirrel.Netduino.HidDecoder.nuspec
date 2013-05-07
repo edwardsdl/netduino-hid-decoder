@@ -14,6 +14,6 @@
     <tags>C# Netduino RFID HID MiniProx</tags>
   </metadata>
   <files>
-    <file src="bin\Release\**\" target="lib\netmf42" exclude="**.dll;**.pdb"/>
+    <file src="bin\Release\**\$id$.*" target="lib\netmf42" exclude="**.dll;**.pdb"/>
   </files>
 </package>
